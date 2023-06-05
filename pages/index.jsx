@@ -1,11 +1,12 @@
-import { Carousel } from "@mantine/carousel";
-import { Badge } from "@mantine/core";
+import { Badge, Text } from "@mantine/core";
 import { IconArrowRight, IconDiamond, IconStar } from "@tabler/icons";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { Footer, Header, Testimonial } from "../components";
 import { useQuery } from "urql";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 export default function Home() {
   const router = useRouter();
@@ -77,34 +78,28 @@ export default function Home() {
 const Slider = () => {
   return (
     <div>
-      <Carousel height="100%" loop mx="auto" withIndicators>
-        <Carousel.Slide style={{ zIndex: 99 }}>
-          <div className="w-full mt-[-150px]">
-            <img
-              src={`/sliders/1.png`}
-              alt="cover"
-              className="object_cover w-full "
-            />
-          </div>
-        </Carousel.Slide>
-        <Carousel.Slide style={{ zIndex: 99 }}>
-          <div className="w-full mt-[-98px]">
-            <img
-              src={`/sliders/2.png`}
-              alt="cover"
-              className="object_cover w-full "
-            />
-          </div>
-        </Carousel.Slide>
-        <Carousel.Slide style={{ zIndex: 99 }}>
-          <div className="w-full mt-[-100px]">
-            <img
-              src={`/sliders/3.png`}
-              alt="cover"
-              className="object_cover w-full "
-            />
-          </div>
-        </Carousel.Slide>
+      <Carousel autoPlay infiniteLoop showThumbs={false}>
+        <div>
+          <img
+            src={`/sliders/1.png`}
+            alt="cover"
+            className="object_cover w-full "
+          />
+        </div>
+        <div>
+          <img
+            src={`/sliders/2.png`}
+            alt="cover"
+            className="object_cover w-full "
+          />
+        </div>
+        <div>
+          <img
+            src={`/sliders/3.png`}
+            alt="cover"
+            className="object_cover w-full "
+          />
+        </div>
       </Carousel>
     </div>
   );
@@ -251,11 +246,11 @@ const MiniProducts = () => {
         We supply, install and maintain fire safety equipments at discounted
         prices. Here are some of our top selling equipment.
       </p>
-      <div className="flex space-x-4 overflow-x-auto h-[150px] ">
+      <div className="flex space-x-4 overflow-x-auto ">
         {data?.getFeatured.map((product) => (
           <div
             key={product?.id}
-            className="flex relative shadow-md px-5 space-x-4 min-w-[300px] h-[120px] my-auto"
+            className="flex relative shadow-md px-5 space-x-4 min-w-[300px] max-w-[400px]  my-auto"
           >
             <img
               src={product?.image}
@@ -275,9 +270,9 @@ const MiniProducts = () => {
               <p className="font-light">OFFER !</p>
             </Badge>
             <div className="my-auto">
-              <h1 className="font-[Oswald] text-[1.2rem] mb-2">
+              <Text lineClamp={3} fw="bolder">
                 {product?.name}
-              </h1>
+              </Text>
               <div className="flex mb-3">
                 {[1, 2, 3, 4, 5].map((el) => (
                   <IconStar

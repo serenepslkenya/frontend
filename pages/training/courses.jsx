@@ -68,7 +68,7 @@ export default function Courses() {
           category
           description
           addedBy{
-            fullName
+            firstName
             email
           }
           createdAt
@@ -114,7 +114,7 @@ export default function Courses() {
           category
           description
           addedBy{
-            fullName
+            firstName
             email
           }
           createdAt

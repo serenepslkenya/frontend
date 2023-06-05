@@ -261,15 +261,16 @@ const Product = ({ data }) => {
             </h3>
             <img src={data?.specSheet} alt={data?.name} className="w-full" />
             <div className="flex flex-row-reverse">
-              <Button
-                color="green"
-                onClick={() =>
-                  router.push(
-                    `https://wa.me/254748920306?text=Hello%2CI%20would%20like%20to%20enquire%20about%20this%20product%20%3A%20http%3A%2F%2Flocalhost%3A3000%2Fproduct%2F${data?.id}`
-                  )
-                }
-              >
-                Enquire
+              <Button color="green">
+                <a
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={`https://wa.me/254740650480?text=${encodeURI(
+                    `Hello , I would like to get more info about this product '${data?.name}'`
+                  )}`}
+                >
+                  Enquire
+                </a>
               </Button>
             </div>
           </div>
