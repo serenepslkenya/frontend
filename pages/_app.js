@@ -29,5 +29,5 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default withUrqlClient(() => ({
-  url: "http://localhost:4000/graphql",
+  url: "http://54.173.177.36/:4000/graphql",
 }))(MyApp);
